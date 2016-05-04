@@ -1,0 +1,4 @@
+# Temporale files python
+*.pyc
+# Temporal folders cloude9
+.c9*/
