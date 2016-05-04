@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from cinemania.views import hello
+# from cinemania.views import index
+import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', hello)
+    url(r'^$', views.hola),
+    url(r'^login$', views.login),
+    url(r'^signup$', views.signup)
 ]

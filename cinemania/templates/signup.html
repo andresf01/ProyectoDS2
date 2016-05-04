@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}">
+
+    <title>Cinemania - Sign Up</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+
+    <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css" >
+
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="float-right">
+          <a href="login">Login</a>
+        </div>
+      </div>
+        
+      <form class="form-group">
+
+        <label class="control-label" for="inputEmail"></label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="">
+
+        <label class="control-label" for="inputPassword"></label>
+        <input class="form-control" id="inputPassword" type="password" placeholder="Password" required="">
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" required="">Accept terms and conditions</label>
+        </div>
+
+        <!-- <label class="control-label" for=""></label> -->
+        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+      </form>
+
+      
+
+    <footer class="navbar-fixed-bottom">
+      <div class="container text-center">
+        <h2>Cinemania</h2>
+        <hr />
+        <p>Andres Martinez - Camilo Ruiz - Julian Silva - Miguel Lopez</p>
+      </div>
+    </footer>
+
+  </div> <!-- /container -->
+
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <!-- <script src="./Signin Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script> -->
+
+
+</body></html>
