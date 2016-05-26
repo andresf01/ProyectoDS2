@@ -5,7 +5,7 @@ import sys
 if __name__ == "__main__":
     # sys.path.append('/home/ubuntu/workspace/cinemania')
 
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cinemania.cinemania.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cinemania.settings")
 
     from django.core.management import execute_from_command_line
 

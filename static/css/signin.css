@@ -1,0 +1,19 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.float-right{
+  display: block;
+  float: right;
+}
+
+.form-group {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+footer > div {
+  font-size: 0.7em;
+}

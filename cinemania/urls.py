@@ -16,12 +16,17 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-# from cinemania.views import index
 import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.hola),
-    url(r'^login$', views.login),
-    url(r'^signup$', views.signup)
+    url(r'^$', views.index),
+    url(r'^login$', views.user_login),
+    url(r'^logout$', views.user_logout),
+    url(r'^signup$', views.signup),
+    url(r'^movie$', views.movie),
+    url(r'^dashboard$', views.dashboard),
+    url(r'^account$', views.account),
+    url(r'^search$', views.search),
+    url(r'^mylist$', views.mylist)
 ]

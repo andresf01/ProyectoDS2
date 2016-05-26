@@ -1,0 +1,70 @@
+{# =================== Importa el archivo base html =================== #}
+{% extends "base.html" %}
+
+
+{# =============== Titulo ============== #}
+{% block title %}
+  Cinemania - Dashboard
+{% endblock %}
+
+
+{# =================== Estilos propios de esta pagina =================== #}
+{% block specific-css %}
+  <link rel="stylesheet" href="{{STATIC_URL}}css/slider.css">
+{% endblock %}
+
+
+
+{# ===================  Todo el contenido de la pagina aqui ===================#}
+{% block content %}
+
+
+<div class="col-md-12 col-lg-12 text-center visible-sm-block visible-md-block visible-lg-block">
+  
+
+<div class="col-md-10 col-offset-md-1 center-col">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/FfDhCRzRsBs" frameborder="0" allowfullscreen></iframe>
+  
+  
+</div>
+<!--<div id="slider1" class="csslider infinity">-->
+<!--  <input type="radio" name="slider" checked="checked" id="slider_1"/>-->
+<!--  <input type="radio" name="slider" id="slider_2"/>-->
+<!--  <input type="radio" name="slider" id="slider_3"/>-->
+<!--  <input type="radio" name="slider" id="slider_4"/>-->
+<!--  <input type="radio" name="slider" id="slider_5"/>-->
+  <!--<ul>-->
+   <li><img src="https://resizing.flixster.com/_dcgcyi-RiFAdY0v2KahluSUglA=/180x267/v1.bTsxMTg2NjEwNztqOzE2OTc5OzIwNDg7MTk0NDsyODgw"/>-->
+  <!--  </li>-->
+  <!--  <li><img src="https://resizing.flixster.com/ospCoLD6EDfVJkU0Cr4GIDLrusU=/180x265/v1.bTsxMTg5NTQ0NTtqOzE2OTc3OzIwNDg7NjUxOzk2MA"/>-->
+  <!--  </li>-->
+  <!--  <li><img src="https://resizing.flixster.com/z3s9Ocwxu4N8kiFimNAYY9-Qm90=/180x267/v1.bTsxMTkxNzk3OTtqOzE3MDExOzIwNDg7NjA2Ozg5OA"/>-->
+  <!--  </li>-->
+  <!--  <li><img src="https://resizing.flixster.com/AS6rlpMVZ63FYl8a0nhCyq0k62k=/180x255/v1.bTsxMTg5MDkxODtqOzE2OTk1OzIwNDg7Njc4Ozk2MA"/>-->
+  <!--  </li>-->
+  <!--  <li><img src="https://resizing.flixster.com/rddXjfbjjhMpJEp64fhCsjYG0mw=/180x267/v1.bTsxMTc5MTE2MDtqOzE3MDAxOzIwNDg7NTUyOzgxOA"/>-->
+  <!--  </li>-->
+  <!--</ul>-->
+<!--  <div class="arrows">-->
+<!--    <label for="slider_1"></label>-->
+<!--    <label for="slider_2"></label>-->
+<!--    <label for="slider_3"></label>-->
+<!--    <label for="slider_4"></label>-->
+<!--    <label for="slider_5"></label>-->
+<!--    <label for="slider_1" class="goto-first"></label>-->
+<!--    <label for="slider_5" class="goto-last"></label>-->
+<!--  </div>-->
+<!--  <div class="navigation"> -->
+<!--    <div>-->
+<!--      <label for="slider_1"></label>-->
+<!--      <label for="slider_2"></label>-->
+<!--      <label for="slider_3"></label>-->
+<!--      <label for="slider_4"></label>-->
+<!--      <label for="slider_5"></label>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+</div>
+
+{% endblock %}

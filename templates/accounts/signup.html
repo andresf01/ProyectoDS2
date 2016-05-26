@@ -1,0 +1,55 @@
+{# =================== Importa el archivo base html =================== #}
+{% extends "base.html" %}
+
+
+{# =============== Titulo ============== #}
+{% block title %}
+    Cinemania - Sing Up
+{% endblock %}
+
+{# =============== Navbar css ============== #}
+{% block css-navbar %}
+{% endblock %}
+
+{# =================== Estilos propios de esta pagina =================== #}
+{% block specific-css %}
+    <link rel="stylesheet" href="{{STATIC_URL}}css/signin.css">
+{% endblock %}
+
+
+{# =================== Bara de navegacion =================== #}
+{% block navbar %}
+    <!--Se deja vacio para no cargar el navbar por defecto, se borra el bloque si se desea dejar la barra-->
+{% endblock %}
+
+
+{# ===================  Todo el contenido de la pagina aqui ===================#}
+{% block content %}
+
+<div class="container">
+    {% csrf_token %}
+    <div class="row">
+        <div class="float-right">
+            <a href="login">Login</a>
+        </div>
+    </div>
+    <form class="form-group">
+        <label class="control-label" for="inputUser"></label>
+        <input type="user" name="user" id="inputUser" class="form-control" placeholder="Username" required="" autofocus="">
+        <label class="control-label" for="inputEmail"></label>
+        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="">
+        <label class="control-label" for="inputPassword"></label>
+        <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Password" required="">
+        
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" required="">Accept terms and conditions</label>
+        </div>
+        
+        <!-- <label class="control-label" for=""></label> -->
+        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+    </form>
+    
+</div> <!-- /container -->
+
+{% endblock %}

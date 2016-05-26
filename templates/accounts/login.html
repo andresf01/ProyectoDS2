@@ -1,0 +1,57 @@
+{# =================== Importa el archivo base html =================== #}
+{% extends "base.html" %}
+
+
+{# =============== Titulo ============== #}
+{% block title %}
+  Cinemania - Login
+{% endblock %}
+
+{# =============== Navbar css ============== #}
+{% block css-navbar %}
+{% endblock %}
+
+{# =================== Estilos propios de esta pagina =================== #}
+{% block specific-css %}
+    <link rel="stylesheet" href="{{STATIC_URL}}css/signin.css">
+{% endblock %}
+
+
+{# =================== Bara de navegacion, se deja vacio para no cargar el navbar por defecto  =================== #}
+{% block navbar %}
+{% endblock %}
+
+
+{# ===================  Todo el contenido de la pagina aqui ===================#}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="float-right">
+      <a href="signup">Sign Up</a>
+    </div>
+  </div>
+  <form class="form-group" action="./login" method="POST">
+    {% csrf_token %}
+    <!-- <h2 class="form-signin-heading">Iniciar sesion</h2> -->
+    <label class="control-label" for="inputUser"></label>
+    <input type="user" name="user" id="inputUser" class="form-control" placeholder="Username" required="" autofocus="">
+    <label for="inputPassword" class=""></label>
+    <input type='password' name="password" id='inputPassword' class='form-control' placeholder='Password' required=''>
+    <label for="submitButton" class=""></label>
+    {% if error %}
+    <div>
+      <div class="alert alert-danger">
+        <strong>Login or password incorrect!</strong>
+      </div>
+    </div>
+    {% endif %}
+    <button class="btn btn-primary btn-block" type="submit">Login</button>
+  </form>
+  
+  
+</div> <!-- /container -->
+
+{% endblock %}
+
+{% block specific-js %}
+{% endblock %}

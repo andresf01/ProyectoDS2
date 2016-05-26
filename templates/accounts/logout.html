@@ -1,0 +1,41 @@
+{# =================== Importa el archivo base html =================== #}
+{% extends "base.html" %}
+
+
+{# =============== Titulo ============== #}
+{% block title %}
+  Cinemania - Logout
+{% endblock %}
+
+
+{# =================== Estilos propios de esta pagina =================== #}
+{% block specific-css %}
+    
+{% endblock %}
+
+
+
+{# ===================  Todo el contenido de la pagina aqui ===================#}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12 text-center well">
+        Loggin out...
+    </div>
+</div>
+
+{% endblock %}
+
+{% block specific-js %}
+    <script>
+        function redirect(){
+            $(location).attr('href', './login');
+        }
+        
+        $(function(){
+           setInterval(redirect, 2000);  
+        });
+    
+    </script>
+
+{% endblock %}

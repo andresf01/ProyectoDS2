@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.administrador',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -53,12 +54,12 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'cinemania.cinemania.urls'
+ROOT_URLCONF = 'cinemania.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['cinemania/templates/'],
+        'DIRS': ['templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'cinemania.cinemania.wsgi.application'
+WSGI_APPLICATION = 'cinemania.wsgi.application'
 
 
 # Database
@@ -128,7 +129,6 @@ USE_TZ = True
 
 # SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 STATIC_URL = '/static/'
-OLA_K_ACE = '/olakace/'
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static'),
 )

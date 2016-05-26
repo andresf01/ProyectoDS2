@@ -1,0 +1,38 @@
+.space-top{
+  margin-top: 10px;
+}
+
+.center-col{
+  float: none;
+  margin: 0 auto;
+}
+
+.full-screen-w{
+  width:100%;
+}
+
+.flex{
+  display: inline-flex;
+}
+
+.flex-vertical{
+  display: flex;
+}
+
+
+.top-bar {
+  margin-top: 0 !important;
+  margin-bottom: 5px !important;
+}
+
+.fixed-right-col{
+  float: right;
+  margin-right: 150px;
+}
+
+/* Imagenes de la lista */
+
+.table-img {
+  width: inherit;
+  max-width: width: inherit;
+}
