@@ -34,5 +34,17 @@
 
 .table-img {
   width: inherit;
-  max-width: width: inherit;
+  /*max-width: width: inherit;*/
+}
+
+/*footer{*/
+/*  display: block;*/
+/*  position: fixed;*/
+/*  bottom: 0;*/
+/*  width: 100%;*/
+/*  height: 131px;*/
+/*}*/
+
+.img_poster{
+  height: 450px;
 }

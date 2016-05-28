@@ -28,5 +28,7 @@ urlpatterns = [
     url(r'^dashboard$', views.dashboard),
     url(r'^account$', views.account),
     url(r'^search$', views.search),
-    url(r'^mylist$', views.mylist)
+    url(r'^mylist$', views.mylist),
+    url(r'^test$', views.testApi),
+    url(r'^index_new$',views.index_new)
 ]

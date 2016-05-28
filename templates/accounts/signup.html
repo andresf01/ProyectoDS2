@@ -27,15 +27,16 @@
 {% block content %}
 
 <div class="container">
-    {% csrf_token %}
+    
     <div class="row">
         <div class="float-right">
             <a href="login">Login</a>
         </div>
     </div>
-    <form class="form-group">
+    <form class="form-group" action="./signup" method="POST">
+        {% csrf_token %}
         <label class="control-label" for="inputUser"></label>
-        <input type="user" name="user" id="inputUser" class="form-control" placeholder="Username" required="" autofocus="">
+        <input type="user" name="username" id="inputUser" class="form-control" placeholder="Username" required="" autofocus="">
         <label class="control-label" for="inputEmail"></label>
         <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="">
         <label class="control-label" for="inputPassword"></label>
@@ -43,8 +44,16 @@
         
         <div class="checkbox">
             <label>
-                <input type="checkbox" required="">Accept terms and conditions</label>
+                <input type="checkbox" name="terms" required="">Accept terms and conditions</label>
         </div>
+        
+        {% if error %}
+        <div>
+          <div class="alert alert-danger">
+            <strong>Username already in use!</strong>
+          </div>
+        </div>
+        {% endif %}
         
         <!-- <label class="control-label" for=""></label> -->
         <button type="submit" class="btn btn-primary btn-block">Sign Up</button>

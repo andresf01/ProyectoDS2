@@ -17,7 +17,7 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"> <!--Icono principal de la pagina -->
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
     {% block css-navbar %}
-    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/header.css' %}">
     {% endblock %}
     
     <!--=================== Estilos especificos de cada pagina ===================-->
@@ -46,14 +46,13 @@
         {% include 'navbar.html' %}
     {% endblock %}
 
-<div class="container full-screen-w" style="display:none;" id="main-content">
+    <div class="container full-screen-w" style="display:none;" id="main-content">
+        
+        {# =================== Todo el contenido de la pagina se carga aqui =================== #}
+        {% block content %}
+        {% endblock %}
+    </div>
     
-    {# =================== Todo el contenido de la pagina se carga aqui =================== #}
-    {% block content %}
-    {% endblock %}
-    
-    
-</div>
     {# =================== Carga el footer de la pagina =================== #}
     {% block footer %}
         {% include 'footer.html' %}
@@ -67,7 +66,7 @@
 <!--=================== Scripts generales de todas las paginas ===================-->
 <!-- <script src=""></script> -->
 
-<!--=================== Scripts especificos de cada pagina ===================-->
+<!--=================== Scripts especconvinacionesificos de cada pagina ===================-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="{% static 'js/carga.js' %}"></script> <!-- Dispositivo de carga -->
