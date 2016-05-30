@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block specific-css %}
     {#  =============== insert here all the styeles css  ================= #}
-    
+    <link rel="stylesheet" href="{{STATIC_URL}}css/rating.css">
 {% endblock %}
 
 {% block content %}
@@ -19,7 +19,13 @@
       <img src="{{ img }}"></img>
       <hr>
       <!--Calificacion-->
-      <p>* * * * *</p>
+      <!--<div class="center-col col-md-12 text-center">-->
+        <div class="rate center-col">
+        	<div class="emoji">😑</div>
+        	<input name="" type="range" min="0" max="4" step="1">
+        </div>
+      <!--</div>-->
+      
     </div>
     <!-- Sinapsis -->
     <div class="col-md-6">
@@ -38,4 +44,5 @@
 
 {% block specific-js %}
     {# ================ insert here all the scripts ================= #}
+    <script src="{% static 'js/rating.js' %}"></script>
 {% endblock %}

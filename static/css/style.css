@@ -40,12 +40,14 @@ html, body {
 
 #about {
   /*background-color: #212121;*/
-  background-color: #1b1b1b;
+  /*background-color: #1b1b1b;*/
+  background-color: #141414;
 }
 
 #services {
   /*background-color: #306d9f;*/
-  background-color: #252525;
+  /*background-color: #252525;*/
+  background-color: #1a1a1a;
   /*background-color: #201f1e;*/
   color: #ffffff;
 }
@@ -97,13 +99,13 @@ footer .glyphicon:hover {
 
 .navbar:hover{
   background-color: rgba(0, 0, 0, 0.9);
-  /*-webkit-transition: background-color 0.5s linear;*/
-  /*-moz-transition: background-color 1s linear;*/
-  /*-o-transition: background-color 1s linear;*/
-  /*-ms-transition: background-color 1s linear;*/
+  -webkit-transition: background-color .5s;
+  -moz-transition: background-color .5s;
+  -o-transition: background-color .5s;
+  -ms-transition: background-color .5s;
   transition: background-color .5s;
 }
 
 .footer{
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.3);
 }

@@ -1,56 +1,56 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import authenticate, login, logout
+# from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User 
 from django.db import IntegrityError
 import tmdbsimple as tmdb
 
-def user_login(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect('/dashboard')
-    else:
-        if request.method =='POST':
-            username = request.POST.get('user')
-            password = request.POST.get('password')
-            user = authenticate(username=username, password=password)
+# def user_login(request):
+#     if request.user.is_authenticated():
+#         return HttpResponseRedirect('/dashboard')
+#     else:
+#         if request.method =='POST':
+#             username = request.POST.get('user')
+#             password = request.POST.get('password')
+#             user = authenticate(username=username, password=password)
     
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    request.session["id"] = user.id
-                    return HttpResponseRedirect('/dashboard')
-                else:
-                    return render(request,'accounts/login.html', {'error':True})
-            else:
-                return render(request,'accounts/login.html', {'error':True})
-        else:
-            return render(request,'accounts/login.html', {})
+#             if user is not None:
+#                 if user.is_active:
+#                     login(request, user)
+#                     request.session["id"] = user.id
+#                     return HttpResponseRedirect('/dashboard')
+#                 else:
+#                     return render(request,'accounts/login.html', {'error':True})
+#             else:
+#                 return render(request,'accounts/login.html', {'error':True})
+#         else:
+#             return render(request,'accounts/login.html', {})
     
-def user_logout(request):
-    if request.user.is_authenticated():
-        logout(request)
-        return HttpResponseRedirect('/login')
-    else:
-        return render(request, 'init/index.html')
+# def user_logout(request):
+#     if request.user.is_authenticated():
+#         logout(request)
+#         return HttpResponseRedirect('/login')
+#     else:
+#         return render(request, 'init/index.html')
     
-def signup(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect('/dashboard')
-    elif request.method =='POST':
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        exito = True
-        try:
-            user = User.objects.create_user(username, email, password)
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            request.session["id"] = user.id
-            return HttpResponseRedirect('/dashboard')
-        except IntegrityError as e:
-            return render(request, 'accounts/signup.html', {'error':True})
-    else:
-        return render(request, 'accounts/signup.html')
+# def signup(request):
+#     if request.user.is_authenticated():
+#         return HttpResponseRedirect('/dashboard')
+#     elif request.method =='POST':
+#         username = request.POST.get('username')
+#         email = request.POST.get('email')
+#         password = request.POST.get('password')
+#         exito = True
+#         try:
+#             user = User.objects.create_user(username, email, password)
+#             user = authenticate(username=username, password=password)
+#             login(request, user)
+#             request.session["id"] = user.id
+#             return HttpResponseRedirect('/dashboard')
+#         except IntegrityError as e:
+#             return render(request, 'accounts/signup.html', {'error':True})
+#     else:
+#         return render(request, 'accounts/signup.html')
     
 def index(request):
     return render(request, 'init/index.html')
@@ -65,53 +65,52 @@ def dashboard(request):
     if request.user.is_authenticated():
         return render(request, 'dashboard.html', {'username':request.user.get_username()})
     else:
-        return HttpResponseRedirect('/login')
+        return HttpResponseRedirect('/account/login')
 
-def account(request):
-    # return render(request, 'accounts/account.html')
-    if request.user.is_authenticated():
-        if request.method == 'POST':
-            username = request.user.get_username()
-            password = request.POST.get('password')
-            change_password = False
-            first_name = request.POST.get('firstname')
-            last_name = request.POST.get('lastname')
+# def account(request):
+#     if request.user.is_authenticated():
+#         if request.method == 'POST':
+#             username = request.user.get_username()
+#             password = request.POST.get('password')
+#             change_password = False
+#             first_name = request.POST.get('firstname')
+#             last_name = request.POST.get('lastname')
             
-            if len(password) > 0:
-                request.user.set_password(password)
-                change_password = True
+#             if len(password) > 0:
+#                 request.user.set_password(password)
+#                 change_password = True
             
-            request.user.first_name = first_name
-            request.user.last_name = last_name
+#             request.user.first_name = first_name
+#             request.user.last_name = last_name
             
-            request.user.save()
+#             request.user.save()
             
-            if change_password:
-                user = authenticate(username=username, password=password)
-                if user is not None:
-                    if user.is_active:
-                        login(request, user)
-                        request.session["id"] = user.id
+#             if change_password:
+#                 user = authenticate(username=username, password=password)
+#                 if user is not None:
+#                     if user.is_active:
+#                         login(request, user)
+#                         request.session["id"] = user.id
             
-            user_data = {
-                'username':request.user.get_username(),
-                'email':request.user.email,
-                'firstname':request.user.first_name,
-                'lastname':request.user.last_name,
-                'success':True
-            }
-            return render(request, 'accounts/account.html', user_data)
-        else:
-            user_data = {
-                'username':request.user.get_username(),
-                'email':request.user.email,
-                'firstname':request.user.first_name,
-                'lastname':request.user.last_name
-            }
+#             user_data = {
+#                 'username':request.user.get_username(),
+#                 'email':request.user.email,
+#                 'firstname':request.user.first_name,
+#                 'lastname':request.user.last_name,
+#                 'success':True
+#             }
+#             return render(request, 'accounts/account.html', user_data)
+#         else:
+#             user_data = {
+#                 'username':request.user.get_username(),
+#                 'email':request.user.email,
+#                 'firstname':request.user.first_name,
+#                 'lastname':request.user.last_name
+#             }
             
-            return render(request, 'accounts/account.html', user_data)
-    else:
-        return HttpResponseRedirect('/login')
+#             return render(request, 'accounts/account.html', user_data)
+#     else:
+#         return HttpResponseRedirect('/login')
     
 def search(request):
     if request.user.is_authenticated():
