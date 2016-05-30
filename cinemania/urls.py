@@ -17,16 +17,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 import apps.accounts.urls
-import views
+import apps.dashboard.urls
+import apps.movies.urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index),
+    url(r'^', include(apps.dashboard.urls)),
     url(r'^account/', include(apps.accounts.urls)),
-    url(r'^movie$', views.movie),
-    url(r'^dashboard$', views.dashboard),
-    url(r'^search$', views.search),
-    url(r'^mylist$', views.mylist),
-    url(r'^test$', views.testApi),
-    url(r'^index_new$',views.index_new)
+    url(r'^movies/', include(apps.movies.urls)),
 ]
