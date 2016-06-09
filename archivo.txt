@@ -39,8 +39,9 @@ class Gusto(models.Model):
     
 
 class Calificacion(models.Model):
-    usuario_username = models.ForeignKey(User)
     pelicula_id = models.CharField(max_length=50)
+    calificacion = models.PositiveIntegerField()
+    user = models.ManyToManyField(User)
     
 
 class Lista_Pelicula(models.Model):

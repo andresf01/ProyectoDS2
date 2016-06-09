@@ -2,47 +2,86 @@
 {% load staticfiles %}
 {% block specific-css %}
     {#  =============== insert here all the styeles css  ================= #}
-    <link rel="stylesheet" href="{{STATIC_URL}}css/rating.css">
+    <!-- <link rel="stylesheet" href="{{STATIC_URL}}css/rating.css"> -->
 {% endblock %}
 
 {% block content %}
 
   {# ================ insert here all the content of the page =============== #}
-  <div class="row well well-sm">
+  <div class="row well well-sm"> 
     <div class="col-md-10 col-md-offset-1 text-center">
       <h1>{{ movietitle }}</h1>
     </div>
   </div>
   <div class="row">
+  <div class="col-xs-10 col-xs-offset-1 col-sm-10 -col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
     <!-- Image and rating -->
-    <div class="col-md-3 col-md-offset-1 text-center">
-      <img src="{{ img }}"></img>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
+      <center>
+      <img class="img_poster" src="http://image.tmdb.org/t/p/w300{{ poster }}"></img>
+      </center>
       <hr>
       <!--Calificacion-->
       <!--<div class="center-col col-md-12 text-center">-->
-        <div class="rate center-col">
-        	<div class="emoji">😑</div>
-        	<input name="" type="range" min="0" max="4" step="1">
-        </div>
+        <!--<div class="rate center-col">-->
+        	<!--<input id="rate" name="" type="range" min="0" max="4" step="1">-->
+        <!--</div>-->
       <!--</div>-->
+      <div class="ec-stars-wrapper" >
+        <!--<form action="./" method="POST">-->
+        <form id="myform">
+          {% csrf_token %}
+        </form>
+        
+      	<a class="rate" id="rate1" href="#" data-value="1" title="Rate with 1 star">&#9733;</a>
+      	<a class="rate" id="rate2" href="#" data-value="2" title="Rate with 2 stars">&#9733;</a>
+      	<a class="rate" id="rate3" href="#" data-value="3" title="Rate with 3 stars">&#9733;</a>
+      	<a class="rate" id="rate4" href="#" data-value="4" title="Rate with 4 stars">&#9733;</a>
+      	<a class="rate" id="rate5" href="#" data-value="5" title="Rate with 5 stars">&#9733;</a>
+      	<!--</form>-->
+      </div>
+      <noscript>Necesitas tener habilitado javascript para poder votar</noscript>
+      <!--FinCalificacion-->
       
     </div>
-    <!-- Sinapsis -->
-    <div class="col-md-6">
-      <p class="lead">{{ synapsis }}</p>
+    <!-- Sinopsis -->
+    
+    <!--<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-6 col-lg-6 ">-->
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
+      <h2>Overview</h2>
+      <p class="lead">{{ sinopsis }}</p>
+      <p>&nbsp;</p>
+      <h2>Cast:</h2>
+      <p>
+      {% for per in cast %}
+        {{ per.0 }}&nbsp;{{ per.1 }}&nbsp;
+      {% endfor %}  
+      </p>
+      
+      <!--<h2>la Calaca</h2>-->
+      <p id="calificacion" style="display:none">{{ calificacion }}</p>
     </div>
-  
+
   </div>
-  <!-- actores -->
+  </div>
+  <!--Trailer-->
   <div class="row">
-    <div class="col-md-6 col-md-offset-4">
-      <p>{{ actors }}</p>
-    </div>
+  <div class="col-xs-10 col-xs-offset-1 col-sm-10 -col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1 text-center">
+    <iframe width="560" height="315" src="{{ trailer }}" frameborder="0" allowfullscreen></iframe>
   </div>
+  </div>
+  
+  <!-- actores -->
+  <!--<div class="row">-->
+  <!--  <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-4 col-lg-6 col-lg-offset-4">-->
+      
+      <!--<p>{{ cast }}</p>-->
+  <!--  </div>-->
+  <!--</div>-->
     
 {% endblock %}
 
 {% block specific-js %}
     {# ================ insert here all the scripts ================= #}
-    <script src="{% static 'js/rating.js' %}"></script>
+     <script src="{% static 'js/rating.js' %}"></script> 
 {% endblock %}

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  
   // Show personal data
   // $("#inputName").value("{{ name }}");
   // $("#inputLastName").value("{{ lastname }}");
@@ -53,9 +54,15 @@ $(document).ready(function() {
       
   });
   
-    
-    
-    
+
+  $('#todisable').on('click', function(event) {
+    $('#dis').val("true");
+  });
+  
+  $('#close').on('click', function(event) {
+    $('#dis').val("false");
+  });
+
     
 });
 

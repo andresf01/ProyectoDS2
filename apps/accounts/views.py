@@ -66,37 +66,42 @@ def signup(request):
 def account(request):
     if request.user.is_authenticated(): # Si el usuario esta logueado
         if request.method == 'POST':
-            # Se capturan los datos del POST
-            username = request.user.get_username()
-            password = request.POST.get('password')
-            change_password = False
-            first_name = request.POST.get('firstname')
-            last_name = request.POST.get('lastname')
-            
-            if len(password) > 0:
-                request.user.set_password(password)
-                change_password = True
-            
-            request.user.first_name = first_name
-            request.user.last_name = last_name
-            
-            request.user.save()
-            
-            if change_password:
-                user = authenticate(username=username, password=password)
-                if user is not None:
-                    if user.is_active:
-                        login(request, user)
-                        request.session["id"] = user.id
-            
-            user_data = {
-                'username':request.user.get_username(),
-                'email':request.user.email,
-                'firstname':request.user.first_name,
-                'lastname':request.user.last_name,
-                'success':True
-            }
-            return render(request, 'accounts/account.html', user_data)
+            if request.POST.get('dis') == 'true':
+                request.user.is_active = False
+                request.user.save()
+                return HttpResponseRedirect('/account/logout')
+            else:
+                # Se capturan los datos del POST
+                username = request.user.get_username()
+                password = request.POST.get('password')
+                change_password = False
+                first_name = request.POST.get('firstname')
+                last_name = request.POST.get('lastname')
+                
+                if len(password) > 0:
+                    request.user.set_password(password)
+                    change_password = True
+                
+                request.user.first_name = first_name
+                request.user.last_name = last_name
+                
+                request.user.save()
+                
+                if change_password:
+                    user = authenticate(username=username, password=password)
+                    if user is not None:
+                        if user.is_active:
+                            login(request, user)
+                            request.session["id"] = user.id
+                
+                user_data = {
+                    'username':request.user.get_username(),
+                    'email':request.user.email,
+                    'firstname':request.user.first_name,
+                    'lastname':request.user.last_name,
+                    'success':True
+                }
+                return render(request, 'accounts/account.html', user_data)
         else:
             user_data = {
                 'username':request.user.get_username(),
@@ -107,4 +112,4 @@ def account(request):
             
             return render(request, 'accounts/account.html', user_data)
     else: # Si no esta logueado se muestra la pagina de login
-        return HttpResponseRedirect('account/login')
+        return HttpResponseRedirect('/account/login')

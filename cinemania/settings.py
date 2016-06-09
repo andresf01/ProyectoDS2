@@ -30,6 +30,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 APPEND_SLASH = True
 
+# Numero de dias para activacion de cuenta
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;
 
 # Application definition
 
@@ -40,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.administrador',
     'apps.accounts',
     'apps.dashboard',
     'apps.movies',

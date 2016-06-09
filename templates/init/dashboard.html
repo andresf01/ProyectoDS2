@@ -22,13 +22,15 @@
 <div class="col-md-12 col-lg-12 text-center visible-sm-block visible-md-block visible-lg-block">
   
 <div class="row">
-<div class="col-md-20 col-offset-md-10 center-col">
-  <iframe width="420" height="315" src="https://www.youtube.com/embed/HvXqFbwEpeU" frameborder="0" allowfullscreen></iframe>
+<div class="col-md-12 col-offset-md-10 center-col">
+  <iframe width="420" height="315" src="https://www.youtube.com/embed/hdwyVF97hgY" frameborder="0" allowfullscreen></iframe>
   
   
 </div>
 </div>
-<div class="col-md-12"></div>
+<div class="row">
+<div class="col-md-12"><p>&nbsp;</p></div>
+</div>
 <!--<div id="slider1" class="csslider infinity">-->
 <!--  <input type="radio" name="slider" checked="checked" id="slider_1"/>-->
 <!--  <input type="radio" name="slider" id="slider_2"/>-->
@@ -39,41 +41,31 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
+        <!--
         <div class="col-md-3">
-          <img src="https://resizing.flixster.com/_dcgcyi-RiFAdY0v2KahluSUglA=/180x267/v1.bTsxMTg2NjEwNztqOzE2OTc5OzIwNDg7MTk0NDsyODgw"/>
+          <img class="img_poster img-responsive" src="https://resizing.flixster.com/_dcgcyi-RiFAdY0v2KahluSUglA=/180x267/v1.bTsxMTg2NjEwNztqOzE2OTc5OzIwNDg7MTk0NDsyODgw"/>
         </div>
         <div class="col-md-3">
-          <img src = "https://resizing.flixster.com/z3s9Ocwxu4N8kiFimNAYY9-Qm90=/180x267/v1.bTsxMTkxNzk3OTtqOzE3MDExOzIwNDg7NjA2Ozg5OA"/>
+          <img class="img_poster img-responsive" src = "https://resizing.flixster.com/z3s9Ocwxu4N8kiFimNAYY9-Qm90=/180x267/v1.bTsxMTkxNzk3OTtqOzE3MDExOzIwNDg7NjA2Ozg5OA"/>
         </div>
         <div class="col-md-3">
-          <img src = "https://resizing.flixster.com/AS6rlpMVZ63FYl8a0nhCyq0k62k=/180x255/v1.bTsxMTg5MDkxODtqOzE2OTk1OzIwNDg7Njc4Ozk2MA"/>
+          <img class="img_poster img-responsive" src = "https://resizing.flixster.com/AS6rlpMVZ63FYl8a0nhCyq0k62k=/180x255/v1.bTsxMTg5MDkxODtqOzE2OTk1OzIwNDg7Njc4Ozk2MA"/>
         </div>
         <div class="col-md-3">
-           <img src = "https://resizing.flixster.com/rddXjfbjjhMpJEp64fhCsjYG0mw=/180x267/v1.bTsxMTc5MTE2MDtqOzE3MDAxOzIwNDg7NTUyOzgxOA" />
-         
+           <img class="img_poster img-responsive" src = "https://resizing.flixster.com/rddXjfbjjhMpJEp64fhCsjYG0mw=/180x267/v1.bTsxMTc5MTE2MDtqOzE3MDAxOzIwNDg7NTUyOzgxOA" />
         </div>
-      </div>
-    </div>
-    </div>
-   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <div class="row">
-        <div class="col-md-3">
-          <img src="https://resizing.flixster.com/_dcgcyi-RiFAdY0v2KahluSUglA=/180x267/v1.bTsxMTg2NjEwNztqOzE2OTc5OzIwNDg7MTk0NDsyODgw"/>
-        </div>
-        <div class="col-md-3">
-          <img src = "https://resizing.flixster.com/z3s9Ocwxu4N8kiFimNAYY9-Qm90=/180x267/v1.bTsxMTkxNzk3OTtqOzE3MDExOzIwNDg7NjA2Ozg5OA"/>
-        </div>
-        <div class="col-md-3">
-          <img src = "https://resizing.flixster.com/AS6rlpMVZ63FYl8a0nhCyq0k62k=/180x255/v1.bTsxMTg5MDkxODtqOzE2OTk1OzIwNDg7Njc4Ozk2MA"/>
-        </div>
-        <div class="col-md-3">
-           <img src = "https://resizing.flixster.com/rddXjfbjjhMpJEp64fhCsjYG0mw=/180x267/v1.bTsxMTc5MTE2MDtqOzE3MDAxOzIwNDg7NTUyOzgxOA" />
-         
-        </div>
-      </div>
-    </div>
-    </div>
+        -->
+        
+        <!--Raffing-->
+        {% for pel in pelicula %}
+          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center cont_img">
+            <a href="movies/movie/{{ pel.0 }}"><img class="img_poster img-thumbnail img-responsive" src="http://image.tmdb.org/t/p/w300/{{ pel.2 }}"}></a>
+            <a href="movies/movie/{{ pel.0 }}"><p>{{ pel.1 }}</p></a>
+          </div>
+        {% endfor %}
+
+        
+    
     
   <!--  </li>-->
   <!--  <li><img src="https://resizing.flixster.com/ospCoLD6EDfVJkU0Cr4GIDLrusU=/180x265/v1.bTsxMTg5NTQ0NTtqOzE2OTc3OzIwNDg7NjUxOzk2MA"/>-->
