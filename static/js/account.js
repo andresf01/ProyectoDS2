@@ -9,6 +9,7 @@ $(document).ready(function() {
   var pwd2 = $('#inputPassword2');
   // var button_changes_attr = ""+$("#button-changes").attr("class");
   
+  // For password
   pwd1.on('keyup',function(){
     if($('#p1').val() !== ""){
       pwd2.show(0);
@@ -54,13 +55,33 @@ $(document).ready(function() {
       
   });
   
-
+  // Para deshabilitar la cuenta
+  var delete_button = false;
   $('#todisable').on('click', function(event) {
-    $('#dis').val("true");
+    console.log('to disable');
+    $('#op').val("delete");
+    delete_button = true;
   });
   
   $('#close').on('click', function(event) {
-    $('#dis').val("false");
+    
+      $('#op').val("modify");
+      console.log('clicked close');
+    
+  });
+  
+  $('body').on('click' ,function(event) {
+    // $('#todisable').on('click', function(event) {
+      // delete_button = true;
+    // });
+    if(!delete_button){
+      $('#op').val("modify");
+      console.log('clicked body');
+      delete_button = false;
+    }
+    else{
+      delete_button = false;
+    }
   });
 
     

@@ -3,6 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError
+from django.core.mail import send_mail
+from apps.movies.models import Lista
+from smtplib import SMTPException
+from django.core.mail import EmailMessage
 
 # Create your views here.
 
@@ -55,9 +59,27 @@ def signup(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             request.session["id"] = user.id
+            lista1 = Lista(name='Por ver')
+            lista1.save()
+            lista1.user.add(request.user)
+            lista1.save()
+            lista2 = Lista(name='Vistas')
+            lista2.save()
+            lista2.user.add(request.user)
+            lista2.save()
+            
+
+            msg = EmailMessage('Account Creation confirmation',
+            'Hello \n Congratulations for registering in cinemania we are very happy that you chose us.', to=[email])
+            msg.send(fail_silently=False)
+            
             return HttpResponseRedirect('/dashboard')
         except IntegrityError as e:
             return render(request, 'accounts/signup.html', {'error':True})
+        except  SMTPException as e:
+            # print "jojojojo"
+            return render(request, 'accounts/signup.html', {'error':True})
+            
     else: # Si no a enviado datos por post se muestra la pagina de sign up
         return render(request, 'accounts/signup.html')
 
@@ -66,7 +88,8 @@ def signup(request):
 def account(request):
     if request.user.is_authenticated(): # Si el usuario esta logueado
         if request.method == 'POST':
-            if request.POST.get('dis') == 'true':
+            op = request.POST.get('op')
+            if op == 'delete':
                 request.user.is_active = False
                 request.user.save()
                 return HttpResponseRedirect('/account/logout')
@@ -93,13 +116,14 @@ def account(request):
                         if user.is_active:
                             login(request, user)
                             request.session["id"] = user.id
-                
                 user_data = {
                     'username':request.user.get_username(),
                     'email':request.user.email,
                     'firstname':request.user.first_name,
                     'lastname':request.user.last_name,
-                    'success':True
+                    'auditor':request.user.is_staff,
+                    'success':True,
+                    'autenticated':True
                 }
                 return render(request, 'accounts/account.html', user_data)
         else:
@@ -107,9 +131,15 @@ def account(request):
                 'username':request.user.get_username(),
                 'email':request.user.email,
                 'firstname':request.user.first_name,
-                'lastname':request.user.last_name
+                'lastname':request.user.last_name,
+                'auditor':request.user.is_staff,
+                'autenticated':True
             }
-            
             return render(request, 'accounts/account.html', user_data)
     else: # Si no esta logueado se muestra la pagina de login
         return HttpResponseRedirect('/account/login')
+
+
+def statistics(request):
+    if request.user.is_authenticated(): # Si el usuario esta logueado
+        return render(request, 'accounts/statistics.html')

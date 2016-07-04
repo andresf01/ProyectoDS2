@@ -2,10 +2,16 @@
 
 /* Navbar */
 
+html{
+  position: relative;
+  min-height: 100%;
+}
+
 body{
-  margin-top: 80px; /* Para navbar fija */
-  /*padding-top: 80px; /* Para navbar fija */
+  /* margin-top: 80px;*/ /* Para navbar fija */
+  /* padding-top: 80px; /* Para navbar fija */
   /*margin-bottom : 170px;*/
+  background-color: #141414;
 }
 
 /* Evita que al colapsar la barra se genere
@@ -24,11 +30,12 @@ body{
 
 /* Footer */
 .footer{
-  /*position: absolute;
-  bottom: 0;
-  width: 100%;*/
-  /* Set the fixed height of the footer here */
-  /*height: 0px;*/
+  position: absolute;
+  /*bottom: 0px;*/
+  bottom: 131px;
+  width: 100%;
+   /*Set the fixed height of the footer here */
+  height: 0px;
 }
 
 

@@ -8,12 +8,16 @@
 {% endblock %}
 
 {# =============== Navbar css ============== #}
-{% block css-navbar %}
-{% endblock %}
+
 
 {# =================== Estilos propios de esta pagina =================== #}
 {% block specific-css %}
     <link rel="stylesheet" href="{{STATIC_URL}}css/signin.css">
+    <style type="text/css">
+      body{
+        background: url("/static/img/kung-fu-panda_blur.jpg") no-repeat center center fixed;
+      }
+    </style>
 {% endblock %}
 
 
@@ -28,11 +32,11 @@
 
 <div class="container">
     
-    <div class="row">
-        <div class="float-right">
-            <a href="login">Login</a>
-        </div>
-    </div>
+    <!--<div class="row">-->
+    <!--    <div class="float-right">-->
+    <!--        <a href="login">Login</a>-->
+    <!--    </div>-->
+    <!--</div>-->
     <form class="form-group" action="./signup" method="POST">
         {% csrf_token %}
         <label class="control-label" for="inputUser"></label>
@@ -57,6 +61,8 @@
         
         <!-- <label class="control-label" for=""></label> -->
         <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+        <br>
+        <p>Already a member? <a href="/account/login">Sign in now <i class="glyphicon glyphicon-arrow-right"></i></a></p>
     </form>
     
 </div> <!-- /container -->

@@ -21,9 +21,23 @@ function post(path, parameters) {
 }
 var j = jQuery.noConflict();
 j(document).ready(function(){
+	
+  j("#minus-button").hide();
   
-	// var rated = document.getElementById("calificacion").innerHTML
-	var rated = $("#calificacion").text();
+  // Function Add Movie to List
+  j("#add-button").on('click',function() {
+      j("#add-button").hide('slow');
+      j("#minus-button").show('slow');
+  });
+  
+  // Function Remove Movie from List
+  j("#minus-button").on('click',function() {
+      j("#minus-button").hide('slow');
+      j("#add-button").show('slow');
+  });
+  
+  // Functions for rating 
+	var rated = j("#calificacion").text();
 	console.log(rated);
 	if (rated == '1'){
 		j('#rate1').css("color","rgb(39, 130, 228)");
@@ -70,5 +84,6 @@ j(document).ready(function(){
 		var url = window.location.href;
 		post(''+url+'', {value : ''+rate+''});
   });
+  
 }
 );

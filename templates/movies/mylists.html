@@ -1,0 +1,73 @@
+{# =================== Importa el archivo base html =================== #}
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{# =============== Titulo ============== #}
+{% block title %}
+  Cinemania - My lists
+{% endblock %}
+
+
+{# =================== Estilos propios de esta pagina =================== #}
+{% block specific-css %}
+    
+{% endblock %}
+
+
+
+{# ===================  Todo el contenido de la pagina aqui ===================#}
+{% block content %}
+<div class="container full-screen-w" style="display:none;" id="main-content">
+  <div class="row well well-sm">
+    <div class="col-md-10 col-md-offset-1 text-center">
+      <h1>My Lists</h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+      <!-- Start here -->
+      
+      <div class="row">
+        <div class="row">
+        <form>
+          <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+            <div class="form-group">
+              <input id="name-new-list" autocomplete="off" placeholder="Add new list..." class="form-control" type="text" name="list-name" required="" />
+            </div>
+            
+          </div>
+          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-center">
+            <button id="addlist-button" disabled="true" type="button" class="text-center btn btn-info "><span class="glyphicon glyphicon-plus"></span></button>
+          </div>
+        </form>
+        </div>
+      </div>
+      <!-- loop para mostrar listas -->
+      <div class="row" id="listas">
+      
+        {% for list in lists %}
+          <div class="row" data-src="{{ list.0 }}">
+            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 ">
+              <li class="list"><a href="{{ list.0 }}">{{ list.1 }}</a></li>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-center">
+              <a id="item-list" data-src="{{ list.0 }}"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+          </div>
+        {% endfor %}
+      
+        
+      </div>
+      <!-- End loop -->
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block specific-js %}
+    {# ================ insert here all the scripts ================= #}
+     <script src="{% static 'js/mylists.js' %}"></script> 
+{% endblock %}

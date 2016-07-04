@@ -8,28 +8,33 @@
 {% endblock %}
 
 {# =============== Navbar css ============== #}
-{% block css-navbar %}
-{% endblock %}
+
 
 {# =================== Estilos propios de esta pagina =================== #}
 {% block specific-css %}
     <link rel="stylesheet" href="{{STATIC_URL}}css/signin.css">
+    <style type="text/css">
+      body{
+        background: url("/static/img/spiderman_blur.jpg") no-repeat center center fixed;
+      }
+    </style>
 {% endblock %}
 
 
 {# =================== Bara de navegacion, se deja vacio para no cargar el navbar por defecto  =================== #}
 {% block navbar %}
+
 {% endblock %}
 
 
 {# ===================  Todo el contenido de la pagina aqui ===================#}
 {% block content %}
 <div class="container">
-  <div class="row">
-    <div class="float-right">
-      <a href="signup">Sign Up</a>
-    </div>
-  </div>
+  <!--<div class="row">-->
+  <!--  <div class="float-right">-->
+  <!--    <a href="signup">Sign Up</a>-->
+  <!--  </div>-->
+  <!--</div>-->
   <form class="form-group" action="./login" method="POST">
     {% csrf_token %}
     <!-- <h2 class="form-signin-heading">Iniciar sesion</h2> -->
@@ -46,6 +51,8 @@
     </div>
     {% endif %}
     <button class="btn btn-primary btn-block" type="submit">Login</button>
+    <br>
+    <p>New to Cinemania? <a href="/account/signup">Join now <i class="glyphicon glyphicon-arrow-right"></i></a></p>
   </form>
   
   

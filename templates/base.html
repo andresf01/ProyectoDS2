@@ -14,7 +14,7 @@
 
 
     <!--=================== Estilos propios de todas las paginas ===================-->
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"> <!--Icono principal de la pagina -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"> <!--Icono principal de la pagina -->
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
     {% block css-navbar %}
         <link rel="stylesheet" href="{% static 'css/header.css' %}">
@@ -46,12 +46,12 @@
         {% include 'navbar.html' %}
     {% endblock %}
 
-    <div class="container full-screen-w" style="display:none;" id="main-content">
+    <!--<div class="container full-screen-w" style="display:none;" id="main-content">-->
         
-        {# =================== Todo el contenido de la pagina se carga aqui =================== #}
-        {% block content %}
-        {% endblock %}
-    </div>
+    {# =================== Todo el contenido de la pagina se carga aqui =================== #}
+    {% block content %}
+    {% endblock %}
+    <!--</div>-->
     
     {# =================== Carga el footer de la pagina =================== #}
     {% block footer %}
@@ -67,7 +67,7 @@
 <!-- <script src=""></script> -->
 
 <!--=================== Scripts especconvinacionesificos de cada pagina ===================-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="{% static 'js/carga.js' %}"></script> <!-- Dispositivo de carga -->

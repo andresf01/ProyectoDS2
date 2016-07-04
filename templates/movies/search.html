@@ -1,23 +1,18 @@
 {# =================== Importa el archivo base html =================== #}
 {% extends "base.html" %}
 
-
 {# =============== Titulo ============== #}
-{% block title %}
-  Cinemania - Search
-{% endblock %}
-
+{% block title %} Cinemania - Search {% endblock %}
 
 {# =================== Estilos propios de esta pagina =================== #}
 {% block specific-css %}
-    
+
 {% endblock %}
 
+{# =================== Todo el contenido de la pagina aqui ===================#}
 
-
-{# ===================  Todo el contenido de la pagina aqui ===================#}
 {% block content %}
-
+<div class="container full-screen-w" style="display:none;" id="main-content">
   <div class="row well well-sm">
     <div class="col-md-10 col-md-offset-1 text-center">
       <h1>Result: {{ search }}</h1>
@@ -27,18 +22,33 @@
     {% for pelicula in peliculas %}
     <div class="row">
       {% for pel in pelicula %}
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center cont_img">
-          <a href="movie/{{ pel.0 }}"><img class="img_poster img-thumbnail img-responsive" src="http://image.tmdb.org/t/p/w300/{{ pel.2 }}"}></a>
-          <a href="movie/{{ pel.0 }}"><p>{{ pel.1 }}</p></a>
-        </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center cont_img">
+        <a href="movie/{{ pel.0 }}"><img class="img_poster img-thumbnail img-responsive" src="{{ pel.2 }}" }></a>
+        <p><a href="movie/{{ pel.0 }}">{{ pel.1 }}</a></p>
+        <!--Tiquin &nbsp;&nbsp;<a href="#"><i class="glyphicon glyphicon-plus"></i></a>-->
+      </div>
       {% endfor %}
     </div>
-      <!-- No se encontro nada -->
-      {% empty %}
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-        <p>{{ search }} not found</p>
-      </div>
+    <!-- No se encontro nada -->
+    {% empty %}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+      <p>{{ search }} not found</p>
+    </div>
     {% endfor %}
   </div>
-
+  <!--Modal for confirmation message-->
+  <div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Added to list!</p>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+</div>
+<!--End modal confirmation message-->
 {% endblock %}

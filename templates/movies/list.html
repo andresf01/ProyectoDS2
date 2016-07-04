@@ -1,10 +1,10 @@
 {# =================== Importa el archivo base html =================== #}
 {% extends "base.html" %}
 
-
+{% load staticfiles %}
 {# =============== Titulo ============== #}
 {% block title %}
-  Cinemania - My list
+  Cinemania - {{ list_name }}
 {% endblock %}
 
 
@@ -17,51 +17,34 @@
 
 {# ===================  Todo el contenido de la pagina aqui ===================#}
 {% block content %}
-
-<div class="row well well-sm">
-  <div class="col-md-10 col-md-offset-1 text-center">
-    <h1>Nice Movies</h1>
+<div class="container full-screen-w" style="display:none;" id="main-content">
+  <div class="row well well-sm">
+    <div class="col-md-10 col-md-offset-1 text-center">
+      <h1>{{ list_name }}</h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div id="movies" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+      <!-- Start here -->
+      <!-- loop para mostrar peliculas de la lista -->
+      {% for pelicula in peliculas %}
+        <div data-src="{{ pelicula.0 }}" class="row">
+          <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+            <li class="list"><a href="../movie/{{ pelicula.0 }}">{{ pelicula.1 }}</a></li>
+          </div>
+          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-center">
+            <a id="item-list" data-src="{{ pelicula.0 }}"><span class="glyphicon glyphicon-remove"></span></a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-    <table class="table table-hover">
-      <tbody>
-        <tr>
-          <td>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <img class="table-img" src="https://resizing.flixster.com/AS6rlpMVZ63FYl8a0nhCyq0k62k=/180x255/v1.bTsxMTg5MDkxODtqOzE2OTk1OzIwNDg7Njc4Ozk2MA">
-            </div>
-            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-              Movie 1
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <img class="table-img" src="https://resizing.flixster.com/AS6rlpMVZ63FYl8a0nhCyq0k62k=/180x255/v1.bTsxMTg5MDkxODtqOzE2OTk1OzIwNDg7Njc4Ozk2MA">
-            </div>
-            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-              Movie 2
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <img class="table-img" src="https://resizing.flixster.com/AS6rlpMVZ63FYl8a0nhCyq0k62k=/180x255/v1.bTsxMTg5MDkxODtqOzE2OTk1OzIwNDg7Njc4Ozk2MA">
-            </div>
-            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-              Movie 3
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+{% endblock %}
 
-
+{% block specific-js %}
+    {# ================ insert here all the scripts ================= #}
+    <script src="{% static 'js/list.js' %}"></script>
 {% endblock %}
