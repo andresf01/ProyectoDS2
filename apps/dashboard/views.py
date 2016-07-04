@@ -32,7 +32,6 @@ def dashboard(request):
         except:
             print "Error al cargar peliculas populares"
         
-        
         # Se guarda los tipos de genero en un arreglo
         mov_gen = []
         url = Request('http://api.themoviedb.org/3/genre/movie/list?api_key=%s' %(API_KEY))
@@ -60,17 +59,40 @@ def dashboard(request):
                         mov_tmp.append(url_img)
                         # print mov_tmp
                         movies_tmp.append(mov_tmp)
+                        # movies_tmp.append([(movie['id'], movie['title'], url_img])
                     tmp.append(movies_tmp)
                     mov_gen.append(tmp)
                 except:
                     print "Fallo cargando el genero: " + genero['name']
         except:
             print "Fallo cargando los generos"
+        
+        trailer = None
+        try:
+            for movie in popular:
+                url = Request('http://api.themoviedb.org/3/movie/%s/videos?api_key=%s' %(movie[0], API_KEY))
+                response_body = urlopen(url).read()
+                videos = []
+                d = json.loads(response_body)
+                videos = d['results']
+                # print videos
+                # trailer = 'https://www.youtube.com/embed/'
+                url_trailer = None
+                for video in videos:
+                    if video['site'] == 'YouTube' and video['type'] == 'Trailer' and video['key'] != None:
+                        url_trailer = 'https://www.youtube.com/embed/' + video['key']
+                        trailer = [movie[0], movie[1], url_trailer]
+                        break
+                if url_trailer is not None:
+                    break
+        except:
+            print "Fallo buscando Trailer"
 
         return render(request, 'init/dashboard.html', {'username':request.user.get_username(),
             'pelicula':popular,
             'mov_gen':mov_gen,
-            'autenticated':True
+            'autenticated':True,
+            'trailer':trailer
         })
     else:
         return HttpResponseRedirect('/account/login')

@@ -21,16 +21,17 @@ Cinemania - Dashboard
 
 <div class="container full-screen-w" style="display:none;" id="main-content">
   <div class="col-md-12 col-lg-12 text-center visible-xs-block visible-sm-block visible-md-block visible-lg-block">
-  
-      <div class="row">
-          <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 text-center">
-              <h3 class="text-left">We recommend: The Conjuring 2</h3>
-              <div class="embed-responsive embed-responsive-4by3 video-responsive">
-                  <iframe class="embed-responsive-item" width="420" height="315"
-                          src="https://www.youtube.com/embed/hdwyVF97hgY" frameborder="0" allowfullscreen></iframe>
-              </div>
-          </div>
-      </div>
+      {% if trailer %}
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 text-center">
+                <h3 class="text-left">We recommend: <a href="movies/movie/{{ trailer.0 }}">{{ trailer.1 }}</a></h3>
+                <div class="embed-responsive embed-responsive-4by3 video-responsive">
+                    <iframe class="embed-responsive-item" width="420" height="315"
+                            src="{{ trailer.2 }}" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+      {% endif %}
       <!--<div class="row">-->
       <!--  <div class="col-md-12"><p>&nbsp;</p></div>-->
       <!--</div>-->
